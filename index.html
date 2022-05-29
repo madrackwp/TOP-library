@@ -9,9 +9,47 @@
   </head>
   <body>
     <h1>Library App</h1>
-    <div class="container">
+    <div>
       <div class="header">
-        <button>Add Book</button>
+        <div class="add-book-container">
+          <button class="add-book-form-toggle" onclick="openForm()">
+            Add Book
+          </button>
+          <form class="add-book-form" id="book-form">
+            <button onclick="closeForm()">Close</button>
+            <input
+              type="text"
+              placeholder="Book Name"
+              name="book-name"
+              id="add-book-name"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Author Name"
+              name="author-name"
+              id="add-book-author"
+              required
+            />
+            <input
+              type="number"
+              placeholder="Pages"
+              name="book-pages"
+              id="add-book-pages"
+              required
+            />
+            <div class="container" style="position: relative">
+              <input
+                type="checkbox"
+                name="book-read"
+                id="book-read"
+                class="add-book-checkbox"
+              />
+              <label for="book-read">Book Read</label>
+            </div>
+            <button type="submit" onclick="addBook()">Add Book</button>
+          </form>
+        </div>
       </div>
       <div class="bookLibrary">
         <div class="bookCard">

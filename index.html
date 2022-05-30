@@ -22,6 +22,7 @@
               placeholder="Book Name"
               name="book-name"
               id="add-book-name"
+              class="addBookInput"
               required
             />
             <input
@@ -29,6 +30,7 @@
               placeholder="Author Name"
               name="author-name"
               id="add-book-author"
+              class="addBookInput"
               required
             />
             <input
@@ -36,9 +38,10 @@
               placeholder="Pages"
               name="book-pages"
               id="add-book-pages"
+              class="addBookInput"
               required
             />
-            <div class="container" style="position: relative">
+            <div class="container addBookInput" style="position: relative">
               <input
                 type="checkbox"
                 name="book-read"
@@ -47,7 +50,7 @@
               />
               <label for="book-read">Book Read</label>
             </div>
-            <button type="submit" onclick="addBook()">Add Book</button>
+            <button type="submit" onclick="addBook(event)">Add Book</button>
           </form>
         </div>
       </div>

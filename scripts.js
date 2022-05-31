@@ -7,6 +7,12 @@ function Book(bookName, bookAuthor, bookPages, bookRead) {
   this.bookRead = bookRead;
 }
 
+const book1 = new Book("Harry Potter", "JK Rowling", "400", true);
+const book2 = new Book("Lord of the Ring", "Tolkien", "400", true);
+
+myBooks.push(book1);
+myBooks.push(book2);
+
 function renderBooks(booksArray) {
   const bookLibrary = document.querySelector(".bookLibrary");
   while (bookLibrary.firstChild) {
@@ -50,11 +56,70 @@ function renderBooks(booksArray) {
     bookCard.appendChild(removeEntryButton);
     bookLibrary.appendChild(bookCard);
   });
+
+  updateButtons();
 }
 
 const addBookFormToggle = document.querySelector(".add-book-form-toggle");
 const addBookForm = document.querySelector(".add-book-form");
 const addBookFields = document.querySelectorAll(".addBookInput");
+let removeButtons = document.querySelectorAll(".removeButton");
+let toggleReadButtons = document.querySelectorAll(".bookReadToggle");
+
+function updateButtons() {
+  removeButtons = document.querySelectorAll(".removeButton");
+  toggleReadButtons = document.querySelectorAll(".bookReadToggle");
+  removeButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      //We look for the book inside the array and remove it then call render()
+      let bookKey = event.target.parentNode.children[0].innerHTML;
+      for (var i = 0; i < myBooks.length; i++) {
+        if (myBooks[i].bookName == bookKey) {
+          myBooks.splice(i, 1);
+          break;
+        }
+      }
+      renderBooks(myBooks);
+    });
+  });
+
+  //This will make sure that we add the class to the button to change color, also we update the myBooks array to make sure value there is updated
+
+  //TODO: INSTEAD OF USING ADDING THE CLASS AND CHANGING THE ELM IN THE ARRAY, UPDATE THE ELM IN THE ARRAY AND CALL THE RENDER METHOD
+  toggleReadButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      // console.log(event.target.parentNode);
+      //Toggle between read and unread by editing the classList
+      let classList = event.target.classList;
+      if (classList.contains("read")) {
+        classList.replace("read", "unread");
+        event.target.innerText = "Unread";
+      } else {
+        console.log("Book is unread");
+        classList.replace("unread", "read");
+        event.target.innerText = "Read";
+      }
+
+      //We also have to update myBooks
+      //We get the key from the card (for now we let it be the book title), and then we search the book array then we toggle the boolean
+      let bookKey = event.target.parentNode.children[0].innerText;
+      console.log(bookKey);
+      myBooks.forEach((book) => {
+        if (book.bookName == bookKey) {
+          book.bookRead = !book.bookRead;
+        }
+      });
+    });
+  });
+}
+
+function removeEvent(event) {
+  console.log(event);
+}
+
+function toggleRead(event) {
+  console.log(event);
+}
 
 function openForm() {
   addBookForm.style.display = "flex";
@@ -86,3 +151,15 @@ function addBook(event) {
   closeForm();
   clearForm();
 }
+
+renderBooks(myBooks);
+
+const array = [1, 2, 3, 4, 5];
+const newArray = array.forEach((i) => {
+  let toReturn = [];
+  if (i == 3) {
+    return toReturn;
+  } else {
+    toReturn.push(i);
+  }
+});

@@ -17,6 +17,14 @@ button {
   font-family: "Quicksand", sans-serif;
 }
 
+button.bookReadToggle.read {
+  background-color: rgb(80, 180, 102);
+}
+
+button.bookReadToggle.unread {
+  background-color: rgb(163, 109, 109);
+}
+
 input {
   border: none;
   padding: 5px 15px;

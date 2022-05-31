@@ -16,7 +16,7 @@
             Add Book
           </button>
           <form class="add-book-form" id="book-form">
-            <button onclick="closeForm()">Close</button>
+            <button onclick="closeForm()" type="button">Close</button>
             <input
               type="text"
               placeholder="Book Name"
@@ -50,20 +50,14 @@
               />
               <label for="book-read">Book Read</label>
             </div>
-            <button type="submit" onclick="addBook(event)">Add Book</button>
+            <button type="submit" onclick="addBook(event)" type="button">
+              Add Book
+            </button>
           </form>
         </div>
       </div>
-      <div class="bookLibrary">
-        <div class="bookCard">
-          <h2 class="bookName">Harry Potter</h2>
-          <p class="bookAuthor">Stephen Strange</p>
-          <p class="pageCount">432</p>
-          <button class="bookReadToggle">Read</button>
-          <button class="removeButton">Remove</button>
-        </div>
-      </div>
+      <div class="bookLibrary"></div>
     </div>
   </body>
-  <script src="/scripts.js"></script>
+  <script src="/scripts.js" defer></script>
 </html>

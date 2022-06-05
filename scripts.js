@@ -84,23 +84,9 @@ function updateButtons() {
   });
 
   //This will make sure that we add the class to the button to change color, also we update the myBooks array to make sure value there is updated
-
-  //TODO: INSTEAD OF USING ADDING THE CLASS AND CHANGING THE ELM IN THE ARRAY, UPDATE THE ELM IN THE ARRAY AND CALL THE RENDER METHOD
   toggleReadButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      // console.log(event.target.parentNode);
-      //Toggle between read and unread by editing the classList
-      let classList = event.target.classList;
-      if (classList.contains("read")) {
-        classList.replace("read", "unread");
-        event.target.innerText = "Unread";
-      } else {
-        console.log("Book is unread");
-        classList.replace("unread", "read");
-        event.target.innerText = "Read";
-      }
-
-      //We also have to update myBooks
+      //We update myBooks
       //We get the key from the card (for now we let it be the book title), and then we search the book array then we toggle the boolean
       let bookKey = event.target.parentNode.children[0].innerText;
       console.log(bookKey);
@@ -109,6 +95,8 @@ function updateButtons() {
           book.bookRead = !book.bookRead;
         }
       });
+      //We then render all the books agains with renderBooks()
+      renderBooks(myBooks);
     });
   });
 }
